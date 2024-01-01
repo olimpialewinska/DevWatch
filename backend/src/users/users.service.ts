@@ -4,6 +4,7 @@ import { User } from '../entities/User.js';
 import { UserRegister } from '../types/User.js';
 import * as bcrypt from 'bcrypt';
 import { PASSWORD_HASH } from '../constants/passwordHash.js';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UsersService {
@@ -15,8 +16,9 @@ export class UsersService {
 
   async create(userRegister: UserRegister): Promise<User> {
     const user = new User();
-    user.first_name = userRegister.first_name;
+    user.user_id = uuidv4();
     user.last_name = userRegister.last_name;
+    user.first_name = userRegister.first_name;
     user.email = userRegister.email;
     user.password = await bcrypt.hash(userRegister.password, PASSWORD_HASH);
     await this.em.persistAndFlush(user);

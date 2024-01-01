@@ -6,6 +6,8 @@ import "./index.css";
 import "./i18n/i18n.ts";
 import { URLS } from "./constants/urls.ts";
 import Home from "@/pages/Home";
+import Login from "@/pages/Login";
+import Dashboard from "@/pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,18 @@ const router = createBrowserRouter([
       {
         path: URLS.HOME,
         element: <Home />,
+      },
+      {
+        path: URLS.LOGIN,
+        element: <Login />,
+      },
+      {
+        path: URLS.DASHBOARD,
+        element: <Dashboard />,
+      },
+      {
+        path: "*",
+        element: <div>404</div>,
       },
     ],
   },
