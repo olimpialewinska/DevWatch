@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Loader as L } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/renderer/lib/utils";
 import React from "react";
 
 interface LoaderProps {

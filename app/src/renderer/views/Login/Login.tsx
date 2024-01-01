@@ -18,9 +18,8 @@ import {
 
 const Login: FC = () => {
   const { t } = useTranslation();
-  console.log(t("login"));
   return (
-    <div className="h-[calc(100vh-56px)] flex justify-center items-center w-screen px-5">
+    <div className="mt-10 flex justify-center items-center">
       <Card className="w-[400px] transition-all ease-out">
         <Tabs defaultValue="login">
           <CardHeader>

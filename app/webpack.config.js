@@ -163,6 +163,9 @@ const appConfig = getConfig(getBaseConfig("app"), {
     static: {
       directory: join(__dirname, "build"),
     },
+    client: {
+      overlay: false,
+    },
   },
 
   plugins: [],

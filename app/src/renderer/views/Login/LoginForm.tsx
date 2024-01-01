@@ -53,7 +53,7 @@ const LoginForm = () => {
       toast({
         title: t("loginError"),
         description: t("loginErrorDescription"),
-        variant: "default",
+        variant: "destructive",
       });
     },
   });
@@ -77,7 +77,7 @@ const LoginForm = () => {
               {form.formState.errors.email ? (
                 <FormMessage />
               ) : (
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t("email")}</FormLabel>
               )}
               <FormControl>
                 <Input

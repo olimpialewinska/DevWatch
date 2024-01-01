@@ -16,4 +16,7 @@ export default {
   loginError: "Błąd logowania",
   loginErrorDescription: "Nieprawidłowy email lub hasło",
   confirmPassword: "Potwierdź hasło",
+  email: "Email",
+  firstName: "Imie",
+  lastName: "Nazwisko",
 };

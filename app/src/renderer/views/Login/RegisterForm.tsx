@@ -41,11 +41,15 @@ const RegisterForm = () => {
         required_error: t("fieldRequired"),
       })
       .min(8, { message: t("passwordTooShort") }),
+    first_name: z.string().min(1, { message: t("fieldRequired") }),
+    last_name: z.string().min(1, { message: t("fieldRequired") }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -81,8 +85,8 @@ const RegisterForm = () => {
     register({
       password: values.password,
       email: values.email,
-      first_name: "dsfdg",
-      last_name: "fgdgdf",
+      first_name: values.first_name,
+      last_name: values.last_name,
     });
   }
 
@@ -101,7 +105,7 @@ const RegisterForm = () => {
               {form.formState.errors.email ? (
                 <FormMessage />
               ) : (
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t("email")}</FormLabel>
               )}
               <FormControl>
                 <Input placeholder="user@example.com" {...field} />
@@ -109,6 +113,41 @@ const RegisterForm = () => {
             </FormItem>
           )}
         />
+        <div className="flex flex-col gap-3">
+          <FormField
+            control={form.control}
+            name="first_name"
+            render={({ field }) => (
+              <FormItem>
+                {form.formState.errors.first_name ? (
+                  <FormMessage />
+                ) : (
+                  <FormLabel>{t("firstName")}</FormLabel>
+                )}
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="last_name"
+            render={({ field }) => (
+              <FormItem>
+                {form.formState.errors.last_name ? (
+                  <FormMessage />
+                ) : (
+                  <FormLabel>{t("lastName")}</FormLabel>
+                )}
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+
         <div className="flex flex-col gap-3">
           <FormField
             control={form.control}

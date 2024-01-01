@@ -1,6 +1,24 @@
-import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
+import "./i18n/i18n";
+import Login from "./views/Login/Login";
+import { App } from "./App";
 
-createRoot(document.getElementById("root")!).render(<App />);
+const router = createBrowserRouter([
+  {
+    path: "",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Login />,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <RouterProvider router={router} />
+);

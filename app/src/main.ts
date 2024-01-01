@@ -30,6 +30,7 @@ function createWindow() {
     },
   });
   mainWindow.setMenuBarVisibility(false);
+  mainWindow.maximize();
 
   if (process.env.DEV === "1") {
     mainWindow.loadURL("http://localhost:4444/");
