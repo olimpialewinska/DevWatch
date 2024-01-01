@@ -18,8 +18,8 @@ if (!theme) {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
     title: "DevWatch",
     icon: "./public/icon.png",
     webPreferences: {
@@ -37,6 +37,8 @@ function createWindow() {
   } else {
     mainWindow.loadFile("build/index.html");
   }
+
+  mainWindow.webContents.openDevTools({ mode: "left" });
 
   globalShortcut.register("CommandOrControl+N", toggleWindow);
 

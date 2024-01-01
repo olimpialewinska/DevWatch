@@ -106,6 +106,10 @@ const config = {
         ]
       : [],
   },
+
+  externals: {
+    electron: "require('electron')",
+  },
 };
 
 function getConfig(...cfg) {
@@ -159,10 +163,6 @@ const appConfig = getConfig(getBaseConfig("app"), {
     static: {
       directory: join(__dirname, "build"),
     },
-  },
-
-  externals: {
-    electron: "require('electron')",
   },
 
   plugins: [],
