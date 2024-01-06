@@ -11,7 +11,7 @@ import Counter from "./views/Counter";
 import Summary from "./views/Summary";
 import FocusMode from "./views/FocusMode";
 import History from "./views/History";
-import UserSettings from "./views/UserSettings";
+import UserSettings from "./views/Settings";
 
 const router = createHashRouter([
   {

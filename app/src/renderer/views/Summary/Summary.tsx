@@ -16,7 +16,7 @@ const Summary: FC = () => {
       <Header />
       <div className="flex flex-row justify-center items-center w-full px-12">
         <Button
-          onClick={() => timeStore.start()}
+          onClick={() => timeStore.start(false)}
           className="gap-2"
           variant="secondary"
           asChild

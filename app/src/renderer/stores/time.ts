@@ -11,7 +11,7 @@ export class TimeStore {
 
   public start(notification: boolean = true) {
     if (this.isPaused) {
-      this.resume();
+      this.resume(notification);
     } else {
       if (notification)
         window.electron.ipcRenderer.send(
