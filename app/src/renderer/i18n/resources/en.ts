@@ -25,4 +25,8 @@ export default {
   stop: "Stop",
   counter: "Counter",
   details: "Details",
+  settings: "Settings",
+  logout: "Logout",
+  language: "Language",
+  theme: "Theme",
 };

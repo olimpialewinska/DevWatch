@@ -7,9 +7,12 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
+import Tooltip from "./Tooltip";
+import { useTranslation } from "react-i18next";
 
 const LanguageToggle = () => {
   const [language, setLanguage] = useState(i18n.language);
+  const { t } = useTranslation();
 
   const toggleLanguage = (language: Language) => {
     i18n.changeLanguage(language);
@@ -18,16 +21,18 @@ const LanguageToggle = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="min-w-[40px] uppercase"
-        >
-          {language}
-          <span className="sr-only">Toggle language</span>
-        </Button>
-      </DropdownMenuTrigger>
+      <Tooltip text={t("language")}>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            className="min-w-[40px] uppercase"
+          >
+            {language}
+            <span className="sr-only">Toggle language</span>
+          </Button>
+        </DropdownMenuTrigger>
+      </Tooltip>
       <DropdownMenuContent align="end">
         {languages.map((language) => (
           <DropdownMenuItem

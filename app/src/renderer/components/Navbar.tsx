@@ -10,6 +10,7 @@ import { LogoutButton } from "./LogoutButton";
 import { Button } from "./ui/button";
 import { useTranslation } from "react-i18next";
 import { UserRoundCog } from "lucide-react";
+import Tooltip from "./Tooltip";
 
 const Navbar: FC = () => {
   const { theme } = useTheme();
@@ -55,11 +56,18 @@ const Navbar: FC = () => {
         <Button variant="link" className="mr-3" asChild>
           <Link to={URLS.FOCUS_MODE}>{t("focusMode")}</Link>
         </Button>
-        <Button variant="outline" size="icon" className="min-w-[40px]" asChild>
-          <Link to={URLS.USER_SETTINGS}>
-            <UserRoundCog size={20} />
-          </Link>
-        </Button>
+        <Tooltip text={t("settings")}>
+          <Button
+            variant="outline"
+            size="icon"
+            className="min-w-[40px]"
+            asChild
+          >
+            <Link to={URLS.USER_SETTINGS}>
+              <UserRoundCog size={20} />
+            </Link>
+          </Button>
+        </Tooltip>
         <LogoutButton />
         <ModeToggle />
         <LanguageToggle />
