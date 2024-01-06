@@ -4,8 +4,7 @@ import {
   Drawer as D,
   DrawerContent,
 } from "@/renderer/components/ui/drawer";
-import React from "react";
-import { FC } from "react";
+import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 
 const Drawer: FC = () => {

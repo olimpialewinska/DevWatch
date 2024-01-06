@@ -46,7 +46,7 @@ const LoginForm = () => {
     },
   });
 
-  const { mutateAsync: login, isPending: isLoginLoading } = useMutation({
+  const { mutate: login, isPending: isLoginLoading } = useMutation({
     mutationFn: (data: UserLogin) => UserApi.login(data),
     onSuccess: () => {
       navigate("/dashboard");

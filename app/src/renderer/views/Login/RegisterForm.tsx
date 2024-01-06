@@ -94,6 +94,7 @@ const RegisterForm = () => {
     <Form {...form}>
       <form
         data-test="register-form"
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 flex flex-col"
       >

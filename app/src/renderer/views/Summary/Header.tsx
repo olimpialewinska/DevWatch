@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { motion } from "framer-motion";
 import { LampContainer } from "@/renderer/components/ui/lamp";
 
-export function LampDemo() {
+const Header: FC = () => {
   return (
     <LampContainer>
       <motion.h1
@@ -20,4 +20,6 @@ export function LampDemo() {
       </motion.h1>
     </LampContainer>
   );
-}
+};
+
+export default Header;

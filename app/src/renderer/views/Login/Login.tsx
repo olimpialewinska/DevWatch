@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import LoginForm from "./LoginForm";
 import { useTranslation } from "react-i18next";
 import RegisterForm from "./RegisterForm";
@@ -8,7 +8,6 @@ import {
   CardFooter,
   CardHeader,
 } from "@/renderer/components/ui/card";
-import React from "react";
 import {
   Tabs,
   TabsContent,
