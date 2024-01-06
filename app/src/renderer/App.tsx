@@ -6,9 +6,21 @@ import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import { ScrollArea } from "./components/ui/scroll-area";
 import { FC } from "react";
+import { store } from "./stores";
+import { observer } from "mobx-react-lite";
 
-export const App: FC = () => {
+window.electron.ipcRenderer.on("restart-or-pause", (e) => {
+  const timeStore = store.time;
+  timeStore.time === 0
+    ? timeStore.start()
+    : timeStore.isPausedStatus
+    ? timeStore.start()
+    : timeStore.pause();
+});
+
+export const App: FC = observer(() => {
   const queryClient = new QueryClient();
+
   return (
     <ThemeProvider defaultTheme="system">
       <QueryClientProvider client={queryClient}>
@@ -20,4 +32,4 @@ export const App: FC = () => {
       </QueryClientProvider>
     </ThemeProvider>
   );
-};
+});

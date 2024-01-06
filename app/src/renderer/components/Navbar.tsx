@@ -11,11 +11,16 @@ import { Button } from "./ui/button";
 import { useTranslation } from "react-i18next";
 import { UserRoundCog } from "lucide-react";
 import Tooltip from "./Tooltip";
+import { store } from "../stores";
+import { observer } from "mobx-react-lite";
+import { formatTime } from "../lib/formatTime";
+import { cn } from "../lib/utils";
 
-const Navbar: FC = () => {
+const Navbar: FC = observer(() => {
   const { theme } = useTheme();
   const [color, setColor] = useState<string>(theme);
   const { t } = useTranslation();
+  const timeStore = store.time;
 
   useLayoutEffect(() => {
     if (color === "system") {
@@ -56,6 +61,16 @@ const Navbar: FC = () => {
         <Button variant="link" className="mr-3" asChild>
           <Link to={URLS.FOCUS_MODE}>{t("focusMode")}</Link>
         </Button>
+        <Button
+          variant="outline"
+          asChild
+          className={cn(
+            timeStore.time === 0 && "hidden",
+            "min-w-[130px] text-lg"
+          )}
+        >
+          <Link to={URLS.COUNTER}>{formatTime(timeStore.time)}</Link>
+        </Button>
         <Tooltip text={t("settings")}>
           <Button
             variant="outline"
@@ -74,6 +89,6 @@ const Navbar: FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Navbar;

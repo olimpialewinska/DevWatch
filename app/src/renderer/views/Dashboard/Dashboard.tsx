@@ -5,20 +5,25 @@ import { HomeGrid } from "./HomeGrid";
 import { TextGenerateEffect } from "@/renderer/components/ui/text-generate-effect";
 import { useTranslation } from "react-i18next";
 import { URLS } from "@/renderer/constants/urls";
+import { store } from "@/renderer/stores";
 
 const Dashboard: FC = () => {
   const { t } = useTranslation();
+  const timeStore = store.time;
   return (
     <div className="w-full p-6 flex flex-col gap-6">
       <div className="flex flex-row justify-between items-center">
         <TextGenerateEffect words={"Hello, Olimpia!"} className="font-thin" />
         <div className="flex gap-4">
-          <Button
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            asChild
-          >
-            <Link to={URLS.SUMMARY}>{t("stop")}</Link>
-          </Button>
+          {timeStore.time !== 0 && (
+            <Button
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              asChild
+              onClick={() => timeStore.pause(false)}
+            >
+              <Link to={URLS.SUMMARY}>{t("stop")}</Link>
+            </Button>
+          )}
           <Button asChild>
             <Link to={URLS.COUNTER}>{t("start")}</Link>
           </Button>

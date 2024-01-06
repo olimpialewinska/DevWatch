@@ -29,4 +29,7 @@ export default {
   logout: "Wyloguj",
   language: "Język",
   theme: "Motyw",
+  pause: "Pauza",
+  finishWork: "Zakończ pracę",
+  back: "Wstecz",
 };

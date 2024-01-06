@@ -4,6 +4,7 @@ import {
   globalShortcut,
   ipcMain,
   nativeTheme,
+  Notification,
 } from "electron";
 import { store } from "./store";
 import { Theme } from "./renderer/types/Theme";
@@ -44,6 +45,10 @@ function createWindow() {
   globalShortcut.register("CommandOrControl+K", () => {
     app.quit();
   });
+
+  globalShortcut.register("CommandOrControl+Alt+S", () => {
+    mainWindow.webContents.send("restart-or-pause");
+  });
 }
 
 function toggleWindow() {
@@ -53,6 +58,16 @@ function toggleWindow() {
   } else {
     mainWindow.hide();
   }
+}
+
+function showNotification(
+  NOTIFICATION_TITLE: string,
+  NOTIFICATION_BODY: string
+) {
+  new Notification({
+    title: NOTIFICATION_TITLE,
+    body: NOTIFICATION_BODY,
+  }).show();
 }
 
 ipcMain.on("toggle-mode", (event, theme: Theme) => {
@@ -66,6 +81,10 @@ ipcMain.handle("get-theme", (event) => {
 });
 
 app.on("ready", createWindow);
+
+ipcMain.on("show-notification", (_, NOTIFICATION_TITLE, NOTIFICATION_BODY) => {
+  showNotification(NOTIFICATION_TITLE, NOTIFICATION_BODY);
+});
 
 app.on("will-quit", () => {
   globalShortcut.unregisterAll();

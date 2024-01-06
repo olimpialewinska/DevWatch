@@ -1,6 +1,14 @@
-import { atom } from "recoil";
+import { makeAutoObservable } from "mobx";
 
-export const Theme = atom<"dark" | "light" | "system">({
-  key: "app-theme",
-  default: "system",
-});
+type ThemeType = "dark" | "light" | "system";
+export class ThemeStore {
+  public theme: ThemeType = "system";
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  public setTheme(theme: ThemeType) {
+    this.theme = theme;
+  }
+}
