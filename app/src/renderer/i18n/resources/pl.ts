@@ -19,4 +19,10 @@ export default {
   email: "Email",
   firstName: "Imie",
   lastName: "Nazwisko",
+  history: "Historia",
+  focusMode: "Tryb skupienia",
+  start: "Start",
+  stop: "Stop",
+  counter: "Licznik",
+  details: "Szczegóły",
 };

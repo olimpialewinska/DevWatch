@@ -18,10 +18,12 @@ import {
 import { Button } from "@/renderer/components/ui/button";
 import { Loader } from "lucide-react";
 import { Input } from "@/renderer/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const formSchema = z.object({
     email: z
@@ -47,7 +49,7 @@ const LoginForm = () => {
   const { mutateAsync: login, isPending: isLoginLoading } = useMutation({
     mutationFn: (data: UserLogin) => UserApi.login(data),
     onSuccess: () => {
-      console.log("success");
+      navigate("/dashboard");
     },
     onError: () => {
       toast({

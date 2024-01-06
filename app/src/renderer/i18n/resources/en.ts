@@ -19,4 +19,10 @@ export default {
   email: "Email",
   firstName: "First name",
   lastName: "Last name",
+  history: "History",
+  focusMode: "Focus mode",
+  start: "Start",
+  stop: "Stop",
+  counter: "Counter",
+  details: "Details",
 };

@@ -1,9 +1,9 @@
 export const URLS = {
   HOME: "/",
-  LOGIN: "/login",
-  REGISTER: "/register",
   DASHBOARD: "/dashboard",
-  SETTINGS: "/settings",
-  ABOUT: "/about",
-  ACCOUNT: "/account",
+  SUMMARY: "/summary",
+  COUNTER: "/counter",
+  FOCUS_MODE: "/focus-mode",
+  HISTORY: "/history",
+  USER_SETTINGS: "/user-settings",
 };
