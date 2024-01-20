@@ -1,7 +1,7 @@
 import { TextGenerateEffect } from "@/renderer/components/ui/text-generate-effect";
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import Timer from "./Timer";
+import Timer from "./Time";
 
 const Counter: FC = () => {
   const { t } = useTranslation();

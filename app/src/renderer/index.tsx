@@ -12,39 +12,46 @@ import Summary from "./views/Summary";
 import FocusMode from "./views/FocusMode";
 import History from "./views/History";
 import UserSettings from "./views/Settings";
+import { Main } from "./Main";
 
 const router = createHashRouter([
   {
     path: "",
-    element: <App />,
+    element: <Main />,
     children: [
       {
-        path: "/",
-        element: <Login />,
-      },
-      {
-        path: URLS.DASHBOARD,
-        element: <Dashboard />,
-      },
-      {
-        path: URLS.COUNTER,
-        element: <Counter />,
+        path: "",
+        element: <App />,
+        children: [
+          {
+            path: "/",
+            element: <Login />,
+          },
+          {
+            path: URLS.DASHBOARD,
+            element: <Dashboard />,
+          },
+          {
+            path: URLS.COUNTER,
+            element: <Counter />,
+          },
+          {
+            path: URLS.FOCUS_MODE,
+            element: <FocusMode />,
+          },
+          {
+            path: URLS.HISTORY,
+            element: <History />,
+          },
+          {
+            path: URLS.USER_SETTINGS,
+            element: <UserSettings />,
+          },
+        ],
       },
       {
         path: URLS.SUMMARY,
         element: <Summary />,
-      },
-      {
-        path: URLS.FOCUS_MODE,
-        element: <FocusMode />,
-      },
-      {
-        path: URLS.HISTORY,
-        element: <History />,
-      },
-      {
-        path: URLS.USER_SETTINGS,
-        element: <UserSettings />,
       },
     ],
   },

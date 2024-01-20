@@ -41,6 +41,6 @@ export default {
   delete: "Delete",
   backToDashboard: "Back to dashboard",
   notifications: "Notifications",
-  autoStart: "Auto start",
+  autostart: "Auto start",
   logoutOnClose: "Logout on close",
 };

@@ -5,14 +5,14 @@ import { Button } from "@/renderer/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { URLS } from "@/renderer/constants/urls";
-import { Arrow } from "@radix-ui/react-dropdown-menu";
 import { ArrowLeft, MonitorX } from "lucide-react";
+import { observer } from "mobx-react-lite";
 
-const Summary: FC = () => {
+const Summary: FC = observer(() => {
   const timeStore = store.time;
   const { t } = useTranslation();
   return (
-    <div className="w-full p-6 flex flex-col gap-6 items-center pt-0">
+    <div className="w-full flex flex-col gap-6 items-center">
       <Header />
       <div className="flex flex-row justify-center items-center w-full px-12">
         <Button
@@ -41,6 +41,6 @@ const Summary: FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Summary;

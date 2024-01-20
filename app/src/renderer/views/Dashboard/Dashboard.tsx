@@ -6,8 +6,9 @@ import { TextGenerateEffect } from "@/renderer/components/ui/text-generate-effec
 import { useTranslation } from "react-i18next";
 import { URLS } from "@/renderer/constants/urls";
 import { store } from "@/renderer/stores";
+import { observer } from "mobx-react-lite";
 
-const Dashboard: FC = () => {
+const Dashboard: FC = observer(() => {
   const { t } = useTranslation();
   const timeStore = store.time;
   return (
@@ -32,6 +33,6 @@ const Dashboard: FC = () => {
       <HomeGrid />
     </div>
   );
-};
+});
 
 export default Dashboard;

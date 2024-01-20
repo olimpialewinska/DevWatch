@@ -12,7 +12,7 @@ const Time: FC = observer(() => {
   const timeStore = store.time;
   const { t } = useTranslation();
   return (
-    <div className="flex flex-col gap-7 items-center justify-center">
+    <div className="flex flex-col gap-7 items-center justify-center w-full">
       <p className="text-8xl">{formatTime(timeStore.time)}</p>
       <div className="flex flex-row gap-2 items-center ">
         {timeStore.time === 0 ? (
