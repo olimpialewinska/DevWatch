@@ -18,15 +18,12 @@ export function ModeToggle() {
 
   return (
     <DropdownMenu>
-      <Tooltip text={t("theme")}>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" className="min-w-[40px]">
-            <Sun className="dark:hidden" size={20} />
-            <Moon className="hidden dark:flex" size={20} />
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-        </DropdownMenuTrigger>
-      </Tooltip>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" className="min-w-[40px]">
+          <Sun className="dark:hidden" size={20} />
+          <Moon className="hidden dark:flex" size={20} />
+        </Button>
+      </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light

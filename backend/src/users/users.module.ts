@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UsersService } from './users.service.js';
 import { UsersController } from './users.controller.js';
 import { AuthGuard } from '../auth/guard.js';
 import { APP_GUARD } from '@nestjs/core';
+import { UsersService } from './users.service.js';
 
 @Module({
   providers: [

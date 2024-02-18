@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/renderer/components/ui/use-toast";
 import { useTranslation } from "react-i18next";
 import { UserRegister } from "@/renderer/types/User";
-import { UserApi } from "@/renderer/api/UserApi";
 import React from "react";
 import { Button } from "@/renderer/components/ui/button";
 import {
@@ -18,6 +17,7 @@ import {
 } from "@/renderer/components/ui/form";
 import { Loader } from "lucide-react";
 import { Input } from "@/renderer/components/ui/input";
+import { UserApi } from "@/renderer/api/user";
 
 const RegisterForm = () => {
   const { toast } = useToast();

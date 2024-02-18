@@ -21,18 +21,16 @@ const LanguageToggle = () => {
 
   return (
     <DropdownMenu>
-      <Tooltip text={t("language")}>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            className="min-w-[40px] uppercase"
-          >
-            {language}
-            <span className="sr-only">Toggle language</span>
-          </Button>
-        </DropdownMenuTrigger>
-      </Tooltip>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="min-w-[40px] uppercase"
+        >
+          {language}
+          <span className="sr-only">Toggle language</span>
+        </Button>
+      </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {languages.map((language) => (
           <DropdownMenuItem

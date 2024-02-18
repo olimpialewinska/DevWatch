@@ -9,7 +9,7 @@ export default {
   passwordRequired: "Hasło jest wymagane",
   registerSuccess: "Rejestrowacja zakończona sukcesem",
   registerSuccessDescription:
-    "Konto zostało utworzone pomyślnie, sprawdź swój email aby je aktywować",
+    "Konto zostało utworzone pomyślnie, teraz możesz się zalogować",
   registerError: "Błąd rejestracji",
   registerErrorDescription: "Coś poszło nie tak, spróbuj ponownie",
   passwordMismatch: "Hasła nie są takie same",

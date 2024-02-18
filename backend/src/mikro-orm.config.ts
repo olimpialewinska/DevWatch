@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Options } from '@mikro-orm/postgresql';
 import { ConfigService } from '@nestjs/config';
-import { User } from './entities/User.js';
+import { User } from './users/user_entity.js';
 
 @Injectable()
 export class MikroOrmConfigService {
@@ -15,8 +15,8 @@ export class MikroOrmConfigService {
       dbName: this.config.get('DB_NAME'),
       user: this.config.get('DB_USER'),
       password: this.config.get('DB_PASSWORD'),
-      host: 'localhost',
-      port: 5432,
+      host: this.config.get('DB_HOST'),
+      port: this.config.get('DB_PORT'),
       entitiesTs: ['./src/entities'],
     };
   }

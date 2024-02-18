@@ -1,20 +1,17 @@
 import { EntityManager } from '@mikro-orm/postgresql';
 import { Injectable } from '@nestjs/common';
-import { User } from '../entities/User.js';
-import { UserRegister } from '../types/User.js';
 import * as bcrypt from 'bcrypt';
 import { PASSWORD_HASH } from '../constants/passwordHash.js';
 import { v4 as uuidv4 } from 'uuid';
+import { UserNotFoundException } from './user_errors.js';
+import { User } from './user_entity.js';
+import { RegisterDto } from 'src/auth/auth_api.js';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly em: EntityManager) {}
 
-  async findOne(email: string): Promise<User> {
-    return await this.em.findOne('User', { email });
-  }
-
-  async create(userRegister: UserRegister): Promise<User> {
+  async create(userRegister: RegisterDto): Promise<User> {
     const user = new User();
     user.user_id = uuidv4();
     user.last_name = userRegister.last_name;
@@ -25,8 +22,16 @@ export class UsersService {
     return user;
   }
 
-  async getOne(user_id: string): Promise<User> {
-    const user = await this.em.findOne(User, { user_id: user_id });
+  public async findOne(query: any): Promise<User | null> {
+    const user = await this.em.findOne(User, query);
     return user;
+  }
+
+  async getById(userId: string): Promise<User | null> {
+    return this.findOne({ user_id: userId });
+  }
+
+  async getByEmail(email: string): Promise<User | null> {
+    return this.findOne({ email });
   }
 }

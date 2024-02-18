@@ -2,11 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useMutation } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import { useToast } from "@/renderer/components/ui/use-toast";
 import { useTranslation } from "react-i18next";
 import { UserLogin } from "@/renderer/types/User";
-import { UserApi } from "@/renderer/api/UserApi";
 import {
   Form,
   FormControl,
@@ -19,11 +18,14 @@ import { Button } from "@/renderer/components/ui/button";
 import { Loader } from "lucide-react";
 import { Input } from "@/renderer/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import { UserApi } from "@/renderer/api/user";
+import { AuthContext } from "@/renderer/components/AuthProvider";
 
 const LoginForm = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { authState, login } = useContext(AuthContext);
 
   const formSchema = z.object({
     email: z
@@ -46,9 +48,10 @@ const LoginForm = () => {
     },
   });
 
-  const { mutate: login, isPending: isLoginLoading } = useMutation({
+  const { mutate: loginReq, isPending: isLoginLoading } = useMutation({
     mutationFn: (data: UserLogin) => UserApi.login(data),
-    onSuccess: () => {
+    onSuccess: (response) => {
+      void login(response.accessToken, response.refreshToken);
       navigate("/dashboard");
     },
     onError: () => {
@@ -61,7 +64,7 @@ const LoginForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    login(values);
+    loginReq(values);
   }
 
   return (

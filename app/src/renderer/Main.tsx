@@ -1,13 +1,12 @@
 import { ThemeProvider } from "@/renderer/components/theme-provider";
 import * as React from "react";
-import { Toaster } from "./components/ui/toaster";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
-import { ScrollArea } from "./components/ui/scroll-area";
 import { FC } from "react";
 import { store } from "./stores";
 import { observer } from "mobx-react-lite";
+import { AuthProvider } from "./components/AuthProvider";
+import AxiosProvider from "./components/AxiosProvider";
 
 window.electron.ipcRenderer.on("restart-or-pause", (e) => {
   const timeStore = store.time;
@@ -24,7 +23,11 @@ export const Main: FC = observer(() => {
   return (
     <ThemeProvider defaultTheme="system">
       <QueryClientProvider client={queryClient}>
-        <Outlet />
+        <AuthProvider>
+          <AxiosProvider>
+            <Outlet />
+          </AxiosProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </ThemeProvider>
   );

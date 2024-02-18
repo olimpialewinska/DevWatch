@@ -13,13 +13,14 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noImplicitReturns": true
   },
   "include": ["/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

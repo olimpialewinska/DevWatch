@@ -9,7 +9,7 @@ export default {
   passwordRequired: "Password is required",
   registerSuccess: "Register succeeded",
   registerSuccessDescription:
-    "Account created successfully, check your email to activate it",
+    "Account created successfully, now you can log in",
   registerError: "Register error",
   registerErrorDescription: "Something went wrong, please try again",
   passwordMismatch: "Passwords do not match",

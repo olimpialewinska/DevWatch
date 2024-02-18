@@ -645,6 +645,21 @@
     "@radix-ui/react-use-callback-ref" "1.0.1"
     "@radix-ui/react-use-layout-effect" "1.0.1"
 
+"@radix-ui/react-checkbox@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-1.0.4.tgz#98f22c38d5010dd6df4c5744cac74087e3275f4b"
+  integrity sha512-CBuGQa52aAYnADZVt/KBQzXrwx6TqnlwtcIPGtVt5JkkzQwMOLJjPukimhfKEr4GQNd43C+djUh5Ikopj8pSLg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.1"
+    "@radix-ui/react-compose-refs" "1.0.1"
+    "@radix-ui/react-context" "1.0.1"
+    "@radix-ui/react-presence" "1.0.1"
+    "@radix-ui/react-primitive" "1.0.3"
+    "@radix-ui/react-use-controllable-state" "1.0.1"
+    "@radix-ui/react-use-previous" "1.0.1"
+    "@radix-ui/react-use-size" "1.0.1"
+
 "@radix-ui/react-collection@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-collection/-/react-collection-1.0.3.tgz#9595a66e09026187524a36c6e7e9c7d286469159"
@@ -1119,6 +1134,18 @@
   integrity sha512-iNSn6ZA7mHUjrT0a271eKoa1oR1HznlrGbb475awft1kuP3zrhyUCrI8tlGowOr7zRoAxJholjwxO+gfz1IObw==
   dependencies:
     "@tanstack/query-core" "5.17.0"
+
+"@tanstack/react-table@^8.11.3":
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.12.0.tgz#069210657f9f6c6c17584cc955a8ebb25b8642f8"
+  integrity sha512-LlEQ1Gpz4bfpiET+qmle4BhKDgKN3Y/sssc+O/wLqX8HRtjV+nhusYbllZlutZfMR8oeef83whKTj/VhaV8EeA==
+  dependencies:
+    "@tanstack/table-core" "8.12.0"
+
+"@tanstack/table-core@8.12.0":
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.12.0.tgz#ada34e17ca761fed99353b48e8cb7deacc971025"
+  integrity sha512-cq/ylWVrOwixmwNXQjgZaQw1Izf7+nPxjczum7paAnMtwPg1S2qRAJU+Jb8rEBUWm69voC/zcChmePlk2hc6ug==
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -3940,6 +3967,11 @@ jsonfile@^6.0.1:
     universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jwt-decode@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-4.0.0.tgz#2270352425fd413785b2faf11f6e755c5151bd4b"
+  integrity sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==
 
 keyv@^4.0.0:
   version "4.5.4"

@@ -4,6 +4,7 @@ interface UserData {
   userData: {
     theme: string;
     autostart: boolean;
+    token?: string;
   };
 }
 
@@ -19,6 +20,9 @@ const schema: Schema<UserData> = {
       autostart: {
         type: "boolean",
         default: true,
+      },
+      token: {
+        type: "string",
       },
     },
   },

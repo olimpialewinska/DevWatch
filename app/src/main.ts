@@ -28,6 +28,7 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       webSecurity: false,
+      backgroundThrottling: false,
     },
   });
 
@@ -78,6 +79,18 @@ ipcMain.on("toggle-mode", (event, theme: Theme) => {
 
 ipcMain.handle("get-theme", (event) => {
   return theme;
+});
+
+ipcMain.handle("get-token", (event) => {
+  return store.get("userData.token");
+});
+
+ipcMain.handle("set-token", (event, token: string) => {
+  store.set("userData.token", token);
+});
+
+ipcMain.handle("remove-token", (event) => {
+  store.delete("userData.token");
 });
 
 app.on("ready", createWindow);
