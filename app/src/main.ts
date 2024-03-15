@@ -8,6 +8,7 @@ import {
 } from "electron";
 import { store } from "./store";
 import { Theme } from "./renderer/types/Theme";
+import { windowManager } from "node-window-manager";
 
 let mainWindow: BrowserWindow;
 
@@ -91,6 +92,12 @@ ipcMain.handle("set-token", (event, token: string) => {
 
 ipcMain.handle("remove-token", (event) => {
   store.delete("userData.token");
+});
+
+ipcMain.handle("get-active-window", (event) => {
+  const activeWindow = windowManager.getActiveWindow().getTitle();
+  console.log("Active window", activeWindow);
+  return activeWindow;
 });
 
 app.on("ready", createWindow);

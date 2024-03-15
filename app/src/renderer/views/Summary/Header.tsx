@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { LampContainer } from "@/renderer/components/ui/lamp";
 import { store } from "@/renderer/stores";
 import { observer } from "mobx-react-lite";
-import { formatTime } from "@/renderer/lib/formatTime";
+import { formatTimeSeconds } from "@/renderer/lib/formatTime";
 
 const Header: FC = observer(() => {
   const timeStore = store.time;
@@ -20,7 +20,7 @@ const Header: FC = observer(() => {
         className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
       >
         <div>Your work time is</div>
-        <div>{formatTime(timeStore.time)}</div>
+        <div>{formatTimeSeconds(timeStore.time)}</div>
       </motion.h1>
     </LampContainer>
   );

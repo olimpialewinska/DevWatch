@@ -68,6 +68,8 @@
     "markdown-it": "^13.0.1",
     "mobx": "^6.12.0",
     "mobx-react-lite": "^3.4.3",
+    "node-window-manager": "^2.2.4",
+    "os": "^0.1.2",
     "path": "^0.12.7",
     "postcss": "^8.4.32",
     "postcss-loader": "^7.3.3",

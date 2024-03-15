@@ -6,9 +6,8 @@ import { store } from "@/renderer/stores";
 import { Link } from "react-router-dom";
 import { Button } from "@/renderer/components/ui/button";
 import { URLS } from "@/renderer/constants/urls";
-import { cn } from "@/renderer/lib/utils";
-import { formatTime } from "@/renderer/lib/formatTime";
 import { observer } from "mobx-react-lite";
+import { formatTimeSeconds } from "@/renderer/lib/formatTime";
 
 const FocusMode: FC = observer(() => {
   const { t } = useTranslation();
@@ -20,7 +19,7 @@ const FocusMode: FC = observer(() => {
         {timeStore.time !== 0 ? (
           <>
             <Button variant="outline" asChild className="min-w-[130px] text-lg">
-              <Link to={URLS.COUNTER}>{formatTime(timeStore.time)}</Link>
+              <Link to={URLS.COUNTER}>{formatTimeSeconds(timeStore.time)}</Link>
             </Button>
             <Drawer />
           </>

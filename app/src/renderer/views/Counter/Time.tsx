@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { store } from "../../stores";
 import { observer } from "mobx-react-lite";
-import { formatTime } from "@/renderer/lib/formatTime";
+import { formatTimeSeconds } from "@/renderer/lib/formatTime";
 import { Button } from "@/renderer/components/ui/button";
 import { Pause, Play, TimerOff } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ const Time: FC = observer(() => {
   const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-7 items-center justify-center w-full">
-      <p className="text-8xl">{formatTime(timeStore.time)}</p>
+      <p className="text-8xl">{formatTimeSeconds(timeStore.time)}</p>
       <div className="flex flex-row gap-2 items-center ">
         {timeStore.time === 0 ? (
           <Button

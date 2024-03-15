@@ -13,7 +13,7 @@ import { UserRoundCog } from "lucide-react";
 import Tooltip from "./Tooltip";
 import { store } from "../stores";
 import { observer } from "mobx-react-lite";
-import { formatTime } from "../lib/formatTime";
+import { formatTimeSeconds } from "../lib/formatTime";
 import { cn } from "../lib/utils";
 import { AuthContext } from "./AuthProvider";
 
@@ -76,7 +76,7 @@ const Navbar: FC = observer(() => {
                 "min-w-[130px] text-lg"
               )}
             >
-              <Link to={URLS.COUNTER}>{formatTime(timeStore.time)}</Link>
+              <Link to={URLS.COUNTER}>{formatTimeSeconds(timeStore.time)}</Link>
             </Button>
             <Tooltip text={t("settings")}>
               <Button

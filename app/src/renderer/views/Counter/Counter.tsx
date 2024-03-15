@@ -2,6 +2,7 @@ import { TextGenerateEffect } from "@/renderer/components/ui/text-generate-effec
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import Timer from "./Time";
+import TimeRows from "@/renderer/components/TimeRow";
 
 const Counter: FC = () => {
   const { t } = useTranslation();
@@ -12,6 +13,9 @@ const Counter: FC = () => {
       </div>
       <div className="flex flex-col justify-between items-center">
         <Timer />
+      </div>
+      <div className="flex flex-row w-full justify-center">
+        <TimeRows />
       </div>
     </div>
   );

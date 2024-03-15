@@ -1,5 +1,3 @@
-import { User } from './user_entity';
-
 export interface GetProfileRequest {
   user_id: string;
 }

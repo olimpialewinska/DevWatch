@@ -1,12 +1,15 @@
 import { makeAutoObservable } from "mobx";
+import { ActiveWindow } from "./activeWindow";
 
 export class TimeStore {
   public time: number = 0;
   private intervalId?: NodeJS.Timeout;
   private isPaused: boolean = false;
+  public activeWindowStore: ActiveWindow;
 
   constructor() {
     makeAutoObservable(this);
+    this.activeWindowStore = new ActiveWindow();
   }
 
   public start(notification: boolean = true) {
@@ -23,6 +26,7 @@ export class TimeStore {
       this.intervalId = setInterval(() => {
         this.time += 1;
       }, 1000);
+      this.activeWindowStore.start();
     }
   }
 
@@ -39,6 +43,7 @@ export class TimeStore {
     }
     this.time = 0;
     this.isPaused = false;
+    this.activeWindowStore.pause();
   }
 
   public pause(notification: boolean = true) {
@@ -53,6 +58,7 @@ export class TimeStore {
       this.intervalId = undefined;
     }
     this.isPaused = true;
+    this.activeWindowStore.pause();
   }
 
   public resume(notification: boolean = true) {
@@ -66,6 +72,7 @@ export class TimeStore {
     this.intervalId = setInterval(() => {
       this.time += 1;
     }, 1000);
+    this.activeWindowStore.resume();
   }
 
   public get isPausedStatus() {

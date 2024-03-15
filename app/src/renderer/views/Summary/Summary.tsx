@@ -7,14 +7,17 @@ import { Link } from "react-router-dom";
 import { URLS } from "@/renderer/constants/urls";
 import { ArrowLeft, MonitorX } from "lucide-react";
 import { observer } from "mobx-react-lite";
+import TimeRows from "@/renderer/components/TimeRow";
 
 const Summary: FC = observer(() => {
   const timeStore = store.time;
+  const activeWindow = store.activeWindow;
   const { t } = useTranslation();
   return (
-    <div className="w-full flex flex-col gap-6 items-center">
+    <div className="w-full flex flex-col gap-6 items-center pb-10">
       <Header />
-      <div className="flex flex-row justify-center items-center w-full px-12">
+      <TimeRows className="max-w-none w-full px-12" />
+      <div className="flex flex-row justify-center items-center w-full px-12 mt-10">
         <Button
           onClick={() => timeStore.start(false)}
           className="gap-2"
@@ -28,7 +31,10 @@ const Summary: FC = observer(() => {
         </Button>
         <div className="flex-grow" />
         <Button
-          onClick={() => timeStore.stop()}
+          onClick={() => {
+            timeStore.stop();
+            activeWindow.clearAll();
+          }}
           className="gap-2"
           variant="secondary"
           asChild
