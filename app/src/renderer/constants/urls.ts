@@ -6,4 +6,5 @@ export const URLS = {
   FOCUS_MODE: "/focus-mode",
   HISTORY: "/history",
   USER_SETTINGS: "/user-settings",
+  HISTORY_DETAILS: "/history-details",
 };

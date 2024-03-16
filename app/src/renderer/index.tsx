@@ -13,6 +13,7 @@ import FocusMode from "./views/FocusMode";
 import History from "./views/History";
 import UserSettings from "./views/Settings";
 import { Main } from "./Main";
+import HistoryDetails from "./views/HistoryDetails";
 
 const router = createHashRouter([
   {
@@ -46,6 +47,10 @@ const router = createHashRouter([
           {
             path: URLS.USER_SETTINGS,
             element: <UserSettings />,
+          },
+          {
+            path: `${URLS.HISTORY_DETAILS}/:historyId/:date`,
+            element: <HistoryDetails />,
           },
         ],
       },

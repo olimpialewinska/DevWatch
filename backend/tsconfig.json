@@ -21,6 +21,13 @@
     "esModuleInterop": true,
     "noImplicitReturns": true
   },
+  "watchOptions": {
+    "watchFile": "priorityPollingInterval",
+    "watchDirectory": "dynamicprioritypolling",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": ["**/node_modules", "dist"]
+  },
   "include": ["/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

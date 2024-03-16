@@ -11,7 +11,6 @@ import { validateEmail, validatePassword } from '../utils/loginCredentials.js';
 import * as bcrypt from 'bcrypt';
 import {
   JwtPair,
-  JwtToken,
   RegisterDto,
   RegisterResponse,
   SignTokenPayload,
@@ -29,7 +28,7 @@ export class AuthService {
   private async getAccessToken(payload: SignTokenPayload) {
     return this.jwtService.signAsync(payload, {
       secret: this.config.get('JWT_SECRET'),
-      expiresIn: '1h',
+      expiresIn: '10h',
     });
   }
 

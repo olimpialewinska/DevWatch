@@ -43,4 +43,11 @@ export default {
   notifications: "Notifications",
   autostart: "Auto start",
   logoutOnClose: "Logout on close",
+  noData: "No data",
+  seeDetails: "See details",
+  dayDeleted: "Day deleted",
+  dayDeletedDescription: "Day was deleted successfully",
+  dayDeletedError: "Delete error",
+  dayDeletedErrorDescription: "There was an error while deleting the day",
+  day: "Day",
 };

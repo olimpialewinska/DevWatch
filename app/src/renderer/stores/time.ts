@@ -1,11 +1,13 @@
 import { makeAutoObservable } from "mobx";
 import { ActiveWindow } from "./activeWindow";
+import { DayApi } from "../api/day";
 
 export class TimeStore {
   public time: number = 0;
   private intervalId?: NodeJS.Timeout;
   private isPaused: boolean = false;
   public activeWindowStore: ActiveWindow;
+  private dayId: string | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -13,6 +15,9 @@ export class TimeStore {
   }
 
   public start(notification: boolean = true) {
+    if (!this.dayId) {
+      this.dayStart();
+    }
     if (this.isPaused) {
       this.resume(notification);
     } else {
@@ -24,6 +29,9 @@ export class TimeStore {
         );
       this.stop();
       this.intervalId = setInterval(() => {
+        if (this.time % 30 === 0) {
+          this.updateTime(30);
+        }
         this.time += 1;
       }, 1000);
       this.activeWindowStore.start();
@@ -78,4 +86,15 @@ export class TimeStore {
   public get isPausedStatus() {
     return this.isPaused;
   }
+
+  private dayStart = async () => {
+    const day = await DayApi.dayStart();
+    this.dayId = day.id;
+  };
+
+  private updateTime = async (time?: 30) => {
+    if (this.dayId) {
+      await DayApi.updateTimer(this.dayId, time || this.time);
+    }
+  };
 }

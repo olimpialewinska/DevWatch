@@ -43,4 +43,10 @@ export default {
   notifications: "Powiadomienia",
   autoStart: "Automatyczny start",
   logoutOnClose: "Wyloguj przy zamykaniu",
+  noData: "Brak danych",
+  seeDetails: "Zobacz szczegóły",
+  dayDeleted: "Dzień usunięty",
+  dayDeletedDescription: "Dzień został usunięty pomyślnie",
+  dayDeletedError: "Błąd usuwania",
+  dayDeletedErrorDescription: "Wystąpił błąd podczas usuwania dnia",
 };

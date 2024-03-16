@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Options } from '@mikro-orm/postgresql';
 import { ConfigService } from '@nestjs/config';
 import { User } from './users/user_entity.js';
+import { Day } from './day/day_entity.js';
 
 @Injectable()
 export class MikroOrmConfigService {
@@ -11,7 +12,7 @@ export class MikroOrmConfigService {
     return {
       type: 'postgresql',
       allowGlobalContext: true,
-      entities: [User],
+      entities: [User, Day],
       dbName: this.config.get('DB_NAME'),
       user: this.config.get('DB_USER'),
       password: this.config.get('DB_PASSWORD'),

@@ -72,25 +72,25 @@ function showNotification(
   }).show();
 }
 
-ipcMain.on("toggle-mode", (event, theme: Theme) => {
+ipcMain.on("toggle-mode", (_, theme: Theme) => {
   store.set("userData.theme", theme);
   nativeTheme.themeSource = theme;
   return theme;
 });
 
-ipcMain.handle("get-theme", (event) => {
+ipcMain.handle("get-theme", () => {
   return theme;
 });
 
-ipcMain.handle("get-token", (event) => {
+ipcMain.handle("get-token", () => {
   return store.get("userData.token");
 });
 
-ipcMain.handle("set-token", (event, token: string) => {
+ipcMain.handle("set-token", (_, token: string) => {
   store.set("userData.token", token);
 });
 
-ipcMain.handle("remove-token", (event) => {
+ipcMain.handle("remove-token", () => {
   store.delete("userData.token");
 });
 
