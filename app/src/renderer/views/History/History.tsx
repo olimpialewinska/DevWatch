@@ -8,6 +8,7 @@ import HistoryRow from "./HistoryRow";
 import { ScrollArea } from "@/renderer/components/ui/scroll-area";
 import { Skeleton } from "@/renderer/components/ui/skeleton";
 import { useInView } from "react-intersection-observer";
+import SectionFetchError from "@/renderer/components/SectionFetchError";
 
 const History: FC = () => {
   const { t } = useTranslation();
@@ -35,7 +36,7 @@ const History: FC = () => {
     return (
       <>
         {Array.from({ length: HISTORY_FETCH_LIMIT }).map((_, i) => (
-          <Skeleton className="h-58px w-full" key={i} />
+          <Skeleton className="h-[58px] w-full" key={i} />
         ))}
       </>
     );
@@ -55,7 +56,7 @@ const History: FC = () => {
       <ScrollArea className="h-[calc(100vh-140px)] pr-3">
         <div className="flex flex-col gap-2">
           {isError ? (
-            <p>{t("error")}</p>
+            <SectionFetchError />
           ) : isLoading ? (
             <SkeletonComponent />
           ) : history?.pages[0].count ? (

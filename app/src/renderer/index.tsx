@@ -9,7 +9,6 @@ import Dashboard from "./views/Dashboard";
 import { URLS } from "./constants/urls";
 import Counter from "./views/Counter";
 import Summary from "./views/Summary";
-import FocusMode from "./views/FocusMode";
 import History from "./views/History";
 import UserSettings from "./views/Settings";
 import { Main } from "./Main";
@@ -35,10 +34,6 @@ const router = createHashRouter([
           {
             path: URLS.COUNTER,
             element: <Counter />,
-          },
-          {
-            path: URLS.FOCUS_MODE,
-            element: <FocusMode />,
           },
           {
             path: URLS.HISTORY,

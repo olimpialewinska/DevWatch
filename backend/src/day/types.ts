@@ -4,4 +4,9 @@ export interface DayCreate {
 
 export interface DayUpdate {
   time: number;
+  details: DayDetailsUpdate;
+}
+
+export interface DayDetailsUpdate {
+  [key: string]: number;
 }

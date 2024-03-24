@@ -5,7 +5,6 @@ import {
   Request,
   Get,
   Delete,
-  Put,
   Patch,
   Body,
   Param,
@@ -48,6 +47,6 @@ export class DayController {
 
   @Patch(':id')
   async update(@Param('id') id: string, @Body() req: DayUpdate): Promise<Day> {
-    return await this.dayService.update(id, req.time);
+    return await this.dayService.update(id, req.time, req.details);
   }
 }

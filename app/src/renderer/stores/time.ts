@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { ActiveWindow } from "./activeWindow";
 import { DayApi } from "../api/day";
+import { InitialData } from "@/store";
 
 export class TimeStore {
   public time: number = 0;
@@ -21,6 +22,18 @@ export class TimeStore {
     if (this.isPaused) {
       this.resume(notification);
     } else {
+      (async () => {
+        const initialData = (await window.electron.ipcRenderer.invoke(
+          "get-initial-data"
+        )) as InitialData;
+        if (
+          initialData &&
+          initialData.date === new Date().toISOString().split("T")[0]
+        ) {
+          this.time = initialData.time;
+          this.activeWindowStore.windowTime = JSON.parse(initialData.windows);
+        }
+      })();
       if (notification)
         window.electron.ipcRenderer.send(
           "show-notification",
@@ -30,7 +43,7 @@ export class TimeStore {
       this.stop();
       this.intervalId = setInterval(() => {
         if (this.time % 30 === 0) {
-          this.updateTime(30);
+          this.updateTime();
         }
         this.time += 1;
       }, 1000);
@@ -87,14 +100,27 @@ export class TimeStore {
     return this.isPaused;
   }
 
+  public finnishWorkDay = async () => {
+    const data = {
+      date: new Date().toISOString().split("T")[0],
+      time: this.time,
+      windows: JSON.stringify(this.activeWindowStore.windowTime),
+    };
+    await window.electron.ipcRenderer.invoke("set-initial-data", data);
+  };
+
   private dayStart = async () => {
     const day = await DayApi.dayStart();
     this.dayId = day.id;
   };
 
-  private updateTime = async (time?: 30) => {
+  private updateTime = async () => {
     if (this.dayId) {
-      await DayApi.updateTimer(this.dayId, time || this.time);
+      await DayApi.updateTimer(
+        this.dayId,
+        this.time,
+        this.activeWindowStore.windowTime
+      );
     }
   };
 }

@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PASSWORD_HASH } from '../constants/passwordHash.js';
 import { v4 as uuidv4 } from 'uuid';
-import { UserNotFoundException } from './user_errors.js';
 import { User } from './user_entity.js';
 import { RegisterDto } from 'src/auth/auth_api.js';
 
@@ -14,8 +13,6 @@ export class UsersService {
   async create(userRegister: RegisterDto): Promise<User> {
     const user = new User();
     user.user_id = uuidv4();
-    user.last_name = userRegister.last_name;
-    user.first_name = userRegister.first_name;
     user.email = userRegister.email;
     user.password = await bcrypt.hash(userRegister.password, PASSWORD_HASH);
     await this.em.persistAndFlush(user);

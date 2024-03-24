@@ -20,7 +20,6 @@ export default {
   firstName: "Imie",
   lastName: "Nazwisko",
   history: "Historia",
-  focusMode: "Tryb skupienia",
   start: "Start",
   stop: "Stop",
   counter: "Licznik",
@@ -49,4 +48,8 @@ export default {
   dayDeletedDescription: "Dzień został usunięty pomyślnie",
   dayDeletedError: "Błąd usuwania",
   dayDeletedErrorDescription: "Wystąpił błąd podczas usuwania dnia",
+  day: "Dzień",
+  hello: "Witaj, {{email}}!",
+  errorOccurred: "Wystąpił błąd",
+  errorOccurredDescription: "Coś poszło nie tak, spróbuj ponownie",
 };

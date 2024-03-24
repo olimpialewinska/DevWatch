@@ -39,7 +39,7 @@ const Summary: FC = observer(() => {
           variant="secondary"
           asChild
         >
-          <Link to={URLS.DASHBOARD}>
+          <Link to={URLS.DASHBOARD} onClick={() => timeStore.finnishWorkDay()}>
             <MonitorX size={20} />
             <span>{t("finishWork")}</span>
           </Link>

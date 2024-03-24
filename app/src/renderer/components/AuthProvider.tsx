@@ -111,7 +111,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   const logout = async () => {
-    window.electron.ipcRenderer.invoke("remove-token", "");
+    await window.electron.ipcRenderer.invoke("remove-token", "");
     resetAuthState();
   };
 
@@ -120,7 +120,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   };
 
   const login = async (accessToken: string, refreshToken: string) => {
-    window.electron.ipcRenderer.invoke("set-token", refreshToken);
+    await window.electron.ipcRenderer.invoke("set-token", refreshToken);
     const decodedToken = decodeToken(accessToken);
 
     setAuthState({
@@ -142,7 +142,13 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         login,
       }}
     >
-      {!appIsReady ? <Loader /> : children}
+      {!appIsReady ? (
+        <div className="h-screen w-screen flex flex-col justify-center items-center">
+          <Loader size={64} className="animate-spin" />
+        </div>
+      ) : (
+        children
+      )}
     </Provider>
   );
 };

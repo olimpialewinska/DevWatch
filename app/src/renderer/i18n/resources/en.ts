@@ -20,7 +20,6 @@ export default {
   firstName: "First name",
   lastName: "Last name",
   history: "History",
-  focusMode: "Focus mode",
   start: "Start",
   stop: "Stop",
   counter: "Counter",
@@ -50,4 +49,7 @@ export default {
   dayDeletedError: "Delete error",
   dayDeletedErrorDescription: "There was an error while deleting the day",
   day: "Day",
+  hello: "Hello, {{email}}!",
+  errorOccurred: "An error occurred",
+  errorOccurredDescription: "Something went wrong, please try again",
 };

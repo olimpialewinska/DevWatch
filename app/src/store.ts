@@ -1,10 +1,21 @@
 import Store, { Schema } from "electron-store";
 
+export interface InitialData {
+  date: string;
+  time: number;
+  windows: string;
+}
+
 interface UserData {
   userData: {
     theme: string;
     autostart: boolean;
     token?: string;
+    initialData: {
+      date: string;
+      time: number;
+      windows: string;
+    };
   };
 }
 
@@ -23,6 +34,9 @@ const schema: Schema<UserData> = {
       },
       token: {
         type: "string",
+      },
+      initialData: {
+        default: undefined,
       },
     },
   },

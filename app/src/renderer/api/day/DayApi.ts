@@ -1,6 +1,6 @@
 import { Pagination } from "@/renderer/types/Pagination";
 import Api from "../Api";
-import { Day } from "@/renderer/types/Day";
+import { Day, DayDetailsUpdate } from "@/renderer/types/Day";
 
 export class DayApi {
   static async getHistory(limit: number, offset: number) {
@@ -15,8 +15,15 @@ export class DayApi {
     return day;
   }
 
-  static async updateTimer(id: string, time: number) {
-    const { data: day } = await Api.patch<Day>(`/day/${id}/`, { time });
+  static async updateTimer(
+    id: string,
+    time: number,
+    details: DayDetailsUpdate
+  ) {
+    const { data: day } = await Api.patch<Day>(`/day/${id}/`, {
+      time,
+      details,
+    });
     return day;
   }
 

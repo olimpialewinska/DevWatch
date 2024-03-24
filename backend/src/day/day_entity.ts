@@ -1,4 +1,11 @@
-import { Entity, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
+import {
+  Collection,
+  Entity,
+  OneToMany,
+  PrimaryKey,
+  Property,
+} from '@mikro-orm/core';
+import { DayDetails } from './day_details/day_details_entity.js';
 
 @Entity()
 export class Day {
@@ -16,4 +23,7 @@ export class Day {
 
   @Property()
   created_at: Date = new Date();
+
+  @OneToMany(() => DayDetails, (details) => details.day, { eager: true })
+  details = new Collection<DayDetails>(this);
 }

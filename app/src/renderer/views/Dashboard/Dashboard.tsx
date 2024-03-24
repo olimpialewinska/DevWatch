@@ -17,7 +17,7 @@ const Dashboard: FC = observer(() => {
     <div className="w-full p-6 flex flex-col gap-6">
       <div className="flex flex-row justify-between items-center">
         <TextGenerateEffect
-          words={`Hello, ${authState.email}!`}
+          words={t("hello", { email: authState?.email })}
           className="font-thin"
         />
         <div className="flex gap-4">

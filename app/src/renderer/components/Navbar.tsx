@@ -65,9 +65,6 @@ const Navbar: FC = observer(() => {
             <Button className="ml-6" variant="link" asChild>
               <Link to={URLS.HISTORY}>{t("history")}</Link>
             </Button>
-            <Button variant="link" className="mr-3" asChild>
-              <Link to={URLS.FOCUS_MODE}>{t("focusMode")}</Link>
-            </Button>
             <Button
               variant="outline"
               asChild
@@ -90,7 +87,6 @@ const Navbar: FC = observer(() => {
                 </Link>
               </Button>
             </Tooltip>
-
             <LogoutButton />
           </>
         )}

@@ -82,6 +82,14 @@ ipcMain.handle("get-theme", () => {
   return theme;
 });
 
+ipcMain.handle("get-initial-data", () => {
+  return store.get("userData.initialData");
+});
+
+ipcMain.handle("set-initial-data", (_, initialData) => {
+  store.set("userData.initialData", initialData);
+});
+
 ipcMain.handle("get-token", () => {
   return store.get("userData.token");
 });
@@ -96,7 +104,6 @@ ipcMain.handle("remove-token", () => {
 
 ipcMain.handle("get-active-window", (event) => {
   const activeWindow = windowManager.getActiveWindow().getTitle();
-  console.log("Active window", activeWindow);
   return activeWindow;
 });
 

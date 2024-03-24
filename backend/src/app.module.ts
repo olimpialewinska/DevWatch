@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module.js';
 import { UsersModule } from './users/users.module.js';
 import { DayModule } from './day/day.module.js';
+import { DayDetailsModule } from './day/day_details/day_details.module.js';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { DayModule } from './day/day.module.js';
     AuthModule,
     UsersModule,
     DayModule,
+    DayDetailsModule,
   ],
 })
 export class AppModule {}
