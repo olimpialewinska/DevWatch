@@ -53,7 +53,10 @@ const History: FC = () => {
       <div className="flex flex-row justify-between items-center">
         <TextGenerateEffect words={t("history")} className="font-thin" />
       </div>
-      <ScrollArea className="h-[calc(100vh-140px)] pr-3">
+      <ScrollArea
+        className="h-[calc(100vh-140px)] pr-3 flex justify-center items-center"
+        viewportClassName="max-w-6xl"
+      >
         <div className="flex flex-col gap-2">
           {isError ? (
             <SectionFetchError />

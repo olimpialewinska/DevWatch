@@ -35,9 +35,9 @@ export function ThemeProvider({
       setTheme(themeColor);
     })();
 
-    return () => {
-      window.electron.ipcRenderer.removeAllListeners("get-theme");
-    };
+    // return () => {
+    //   window.electron.ipcRenderer.removeAllListeners("get-theme");
+    // };
   }, []);
 
   useEffect(() => {

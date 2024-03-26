@@ -18,3 +18,12 @@ export interface DayDetails {
   app_open_time: number;
   created_at: string;
 }
+
+export interface BarChart {
+  labels: string[];
+  times: number[];
+}
+
+export interface PieChart extends BarChart {
+  date: string;
+}

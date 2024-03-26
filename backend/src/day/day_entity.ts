@@ -12,8 +12,8 @@ export class Day {
   @PrimaryKey()
   id!: string;
 
-  @Property()
-  date!: string;
+  @Property({ type: 'date' })
+  date!: Date;
 
   @Property()
   user_id!: string;

@@ -16,3 +16,15 @@ export const formatTimeMs = (ms: number) => {
 
   return `${hours}h ${min % 60}m ${sec % 60}s`;
 };
+
+export const roundMsToMinutes = (ms: number) => {
+  return ms / 60000 < 1 ? 1 : Math.round(ms / 60000);
+};
+
+export const roundSecondsToHours = (seconds: number) => {
+  return seconds / 3600 === 0
+    ? 0
+    : seconds / 3600 < 0.75
+    ? 0.5
+    : Math.round(seconds / 3600);
+};

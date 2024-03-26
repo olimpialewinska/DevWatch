@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '../auth/guard.js';
 import { DayService } from './day.service.js';
-import { DayCreate, DayUpdate } from './types.js';
+import { ChartResponse, DayCreate, DayUpdate, TodayPieChart } from './types.js';
 import { Day } from './day_entity.js';
 import { Pagination } from 'src/types/pagination.js';
 
@@ -33,6 +33,52 @@ export class DayController {
     @Query('offset') offset: number,
   ): Promise<Pagination<Day>> {
     return await this.dayService.getHistory(req.user.user_id, limit, offset);
+  }
+
+  @Get('bar-chart-last-week')
+  async getLineChartLastWeek(
+    @Request() req: DayCreate,
+  ): Promise<ChartResponse> {
+    return await this.dayService.getBarChartLastWeek(req.user.user_id);
+  }
+
+  @Get('pie-chart-apps-today')
+  async getAppsPieChartToday(
+    @Request() req: DayCreate,
+  ): Promise<TodayPieChart> {
+    return await this.dayService.getAppsPieChartToday(req.user.user_id);
+  }
+
+  @Get('average-working-time-in-months')
+  async getAverageWorkingTimeInMonths(
+    @Request() req: DayCreate,
+  ): Promise<ChartResponse> {
+    return await this.dayService.getAverageWorkingTimeInMonths(
+      req.user.user_id,
+    );
+  }
+
+  @Get('numbers-of-apps-7-days')
+  async numberOfAppsOpened7Days(
+    @Request() req: DayCreate,
+  ): Promise<ChartResponse> {
+    return await this.dayService.numberOfAppsOpened7Days(req.user.user_id);
+  }
+
+  @Get('total-working-time-in-months')
+  async totalWorkingTimeInMonths(
+    @Request() req: DayCreate,
+  ): Promise<ChartResponse> {
+    return await this.dayService.totalWorkingTimeInMonths(req.user.user_id);
+  }
+
+  @Get('distribution-of-used-applications')
+  async distributionOfUsedApplications(
+    @Request() req: DayCreate,
+  ): Promise<ChartResponse> {
+    return await this.dayService.distributionOfUsedApplications(
+      req.user.user_id,
+    );
   }
 
   @Delete(':id')

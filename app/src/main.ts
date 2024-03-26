@@ -98,6 +98,10 @@ ipcMain.handle("set-token", (_, token: string) => {
   store.set("userData.token", token);
 });
 
+ipcMain.handle("clear-store", () => {
+  store.clear();
+});
+
 ipcMain.handle("remove-token", () => {
   store.delete("userData.token");
 });

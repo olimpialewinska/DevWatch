@@ -14,7 +14,7 @@ const Summary: FC = observer(() => {
   const activeWindow = store.activeWindow;
   const { t } = useTranslation();
   return (
-    <div className="w-full flex flex-col gap-6 items-center pb-10">
+    <div className="w-full flex flex-col gap-6 items-center pb-10 bg-[#030712] text-white">
       <Header />
       <TimeRows className="max-w-none w-full px-12" />
       <div className="flex flex-row justify-center items-center w-full px-12 mt-10">
