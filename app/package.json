@@ -8,12 +8,16 @@
     "start": "cross-env DEV=1 electron .",
     "compile-win32": "npm run build && electron-builder -w",
     "compile-darwin": "npm run build && electron-builder -m",
-    "build": "tsc && webpack --config webpack.config.js"
+    "build": "tsc && webpack --config webpack.config.js",
+    "cypress:run": "TZ=Europe/Warsaw cypress run",
+    "cypress:run:component": "TZ=Europe/Warsaw cypress run --component",
+    "cypress:run:e2e": "cypress run --e2e",
+    "cypress:open": "TZ=Europe/Warsaw cypress open"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.13.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",
     "tailwindcss": "^3.3.5",
@@ -57,7 +61,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "css-loader": "^6.8.1",
-    "electron": "25.0.0",
+    "cypress": "^13.10.0",
+    "electron": "^25.9.8",
     "electron-drag": "^2.0.0",
     "electron-store": "^8.1.0",
     "form-data": "^4.0.0",

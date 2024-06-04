@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 const AccountSettings: FC = () => {
   const { t } = useTranslation();
+  
   return (
     <div className="w-full overflow-hidden relative h-full rounded-xl p-8 font-thin dark:bg-black dark:border-white/[0.2] bg-white border border-input">
       <h1 className="uppercase tracking-wider text-2xl mb-7">
@@ -19,15 +20,21 @@ const AccountSettings: FC = () => {
       <div className="flex flex-col gap-6 px-4 h-[calc(100%-60px)]">
         <div className="flex flex-row justify-between items-center">
           <p className="text-lg">{t("email")}</p>
-          <Input className="w-[250px]" />
+          <Input className="w-[250px]" placeholder="..." />
         </div>
         <div className="flex flex-row justify-between items-center">
-          <p className="text-lg">{t("password")}</p>
+          <p className="text-lg">{t("oldPassword")}</p>
           <Input className="w-[250px]" placeholder="••••••••" />
         </div>
         <div className="flex flex-row justify-between items-center">
-          <p className="text-lg">{t("confirmPassword")}</p>
+          <p className="text-lg">{t("newPassword")}</p>
           <Input className="w-[250px]" placeholder="••••••••" />
+        </div>
+        <div className="flex flex-row justify-end">
+          <Button className="gap-2">
+            <Save size={18} />
+            <span>{t("save")}</span>
+          </Button>
         </div>
         <Separator className="my-2" />
         <div className="flex flex-row justify-between items-center">
@@ -49,10 +56,6 @@ const AccountSettings: FC = () => {
               <ArrowLeft size={18} />
               <span>{t("back")}</span>
             </Link>
-          </Button>
-          <Button className="gap-2">
-            <Save size={18} />
-            <span>{t("save")}</span>
           </Button>
         </div>
       </div>

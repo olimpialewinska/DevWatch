@@ -80,4 +80,11 @@ export default {
   october: "October",
   november: "November",
   december: "December",
+  dark: "Dark",
+  light: "Light",
+  system: "System",
+  pl: "Polish",
+  en: "English",
+  oldPassword: "Old password",
+  newPassword: "New password",
 };

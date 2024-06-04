@@ -10,6 +10,8 @@ interface UserData {
   userData: {
     theme: string;
     autostart: boolean;
+    notification: boolean;
+    logOutOnClose: boolean;
     token?: string;
     initialData: {
       date: string;
@@ -29,6 +31,14 @@ const schema: Schema<UserData> = {
         enum: ["light", "dark", "system"],
       },
       autostart: {
+        type: "boolean",
+        default: true,
+      },
+      logOutOnClose: {
+        type: "boolean",
+        default: false,
+      },
+      notification: {
         type: "boolean",
         default: true,
       },

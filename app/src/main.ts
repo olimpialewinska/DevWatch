@@ -103,7 +103,31 @@ ipcMain.handle("clear-store", () => {
 });
 
 ipcMain.handle("remove-token", () => {
-  store.delete("userData.token");
+  store.set("userData", undefined);
+});
+
+ipcMain.handle("get-notifications", () => {
+  return store.get("userData.notification");
+});
+
+ipcMain.handle("set-notifications", (_, notification: boolean) => {
+  store.set("userData.notification", notification);
+});
+
+ipcMain.handle("get-log-out-on-close", () => {
+  return store.get("userData.logoutOnClose");
+});
+
+ipcMain.handle("set-log-out-on-close", (_, logOutOnClose: boolean) => {
+  store.set("userData.logoutOnClose", logOutOnClose);
+});
+
+ipcMain.handle("get-auto-start", () => {
+  return store.get("userData.autostart");
+});
+
+ipcMain.handle("set-auto-start", (_, autostart: boolean) => {
+  store.set("userData.autostart", autostart);
 });
 
 ipcMain.handle("get-active-window", (event) => {
@@ -122,6 +146,9 @@ app.on("will-quit", () => {
 });
 
 app.on("window-all-closed", () => {
+  if (store.get("userData.logOutOnClose")) {
+    store.set("userData.token", undefined);
+  }
   if (process.platform !== "darwin") {
     app.quit();
   }

@@ -1,20 +1,14 @@
-/* eslint-disable */
-const { resolve, join } = require("path");
-const { merge } = require("webpack-merge");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const createStyledComponentsTransformer =
-  require("typescript-plugin-styled-components").default;
-const TerserPlugin = require("terser-webpack-plugin");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
-var path = require("path");
-
-/* eslint-enable */
+const path = require('path');
+const { merge } = require('webpack-merge');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+const TerserPlugin = require('terser-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const APP_NAME = "DevWatch";
-const INCLUDE = resolve(__dirname, "src");
+const INCLUDE = path.resolve(__dirname, "src");
 const PORT = 4444;
-
 const dev = process.env.DEV === "1";
 
 process.env.NODE_ENV = dev ? "development" : "production";
@@ -26,14 +20,11 @@ const styledComponentsTransformer = createStyledComponentsTransformer({
 
 const config = {
   mode: dev ? "development" : "production",
-
   devtool: dev ? "eval-source-map" : false,
-
   output: {
-    path: resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].bundle.js",
   },
-
   module: {
     rules: [
       {
@@ -50,20 +41,19 @@ const config = {
         ],
       },
       {
-        test: /\.tsx|ts$/,
+        test: /\.tsx?$/,
         use: [
           {
             loader: "ts-loader",
             options: {
               experimentalWatchApi: dev,
-              transpileOnly: true, // |dev| to throw CI when a ts error occurs
+              transpileOnly: true,
               getCustomTransformers: () => ({
                 before: [styledComponentsTransformer],
               }),
             },
           },
         ],
-
         include: INCLUDE,
       },
       {
@@ -73,12 +63,10 @@ const config = {
       },
     ],
   },
-
   node: {
     __dirname: false,
     __filename: false,
   },
-
   resolve: {
     modules: ["node_modules"],
     extensions: [".js", ".jsx", ".tsx", ".ts", ".json"],
@@ -87,9 +75,7 @@ const config = {
     },
     plugins: [new TsconfigPathsPlugin()],
   },
-
   plugins: [new webpack.EnvironmentPlugin(["NODE_ENV"])],
-
   optimization: {
     minimizer: !dev
       ? [
@@ -106,7 +92,6 @@ const config = {
         ]
       : [],
   },
-
   externals: {
     electron: "require('electron')",
   },
@@ -135,11 +120,8 @@ const applyEntries = (config, entries) => {
 const getBaseConfig = (name) => {
   const config = {
     plugins: [],
-
     output: {},
-
     entry: {},
-
     optimization: {
       runtimeChunk: {
         name: `runtime.${name}`,
@@ -150,24 +132,21 @@ const getBaseConfig = (name) => {
       },
     },
   };
-
   return config;
 };
 
 const appConfig = getConfig(getBaseConfig("app"), {
   target: "web",
-
   devServer: {
     port: PORT,
     hot: true,
     static: {
-      directory: join(__dirname, "build"),
+      directory: path.join(__dirname, "build"),
     },
     client: {
       overlay: false,
     },
   },
-
   plugins: [],
 });
 

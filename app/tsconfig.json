@@ -20,7 +20,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/renderer/views/Counter/Time.tsx"
-  ],
+    "src/renderer/views/Counter/Time.tsx",
+    "cypress/**/*.ts", "cypress.d.ts", "src/renderer/cypress/support/cypress.d.ts", "cypress.d.ts", "cypress/support/components.tsx"],
   "exclude": ["node_modules"]
 }

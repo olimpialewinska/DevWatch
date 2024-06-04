@@ -7,7 +7,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
-import Tooltip from "./Tooltip";
 import { useTranslation } from "react-i18next";
 
 const LanguageToggle = () => {
